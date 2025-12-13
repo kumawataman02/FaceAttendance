@@ -1,0 +1,174 @@
+from fastapi import APIRouter, Depends, HTTPException, status, Query, UploadFile, File
+from sqlalchemy.ext.asyncio import AsyncSession
+from typing import Optional
+
+from app.dependencies import get_db
+
+from app.crud.student import (
+    update_student_profile,
+    get_student_by_id,
+    enroll_student_face, get_students
+)
+from app.schemas.student_schema import PaginatedStudentResponse, StudentFilter, StudentResponse, StudentUpdate, \
+    FaceEnrollmentResponse
+from app.services.face_service import face_enrollment_service
+
+str_router = APIRouter(prefix="/students", tags=["students"])
+
+
+@str_router.get("/branch/{branch_name}", response_model=PaginatedStudentResponse)
+async def get_students_by_branch(
+        branch_name: str,
+        page: int = Query(1, ge=1, description="Page number"),
+        limit: int = Query(10, ge=1, le=100, description="Items per page"),
+        status: Optional[int] = Query(None, description="Filter by student status"),
+        search: Optional[str] = Query(None, description="Search by name, mobile, email, or roll number"),
+        db: AsyncSession = Depends(get_db)
+):
+    """
+    Get students belonging to a specific branch (dlb_offline_name).
+
+    - **branch_name**: Name of the branch to fetch students for
+    - **page**: Page number (default: 1)
+    - **limit**: Items per page (default: 10, max: 100)
+    - **status**: Filter by student status
+    - **batch**: Filter by batch name
+    - **search**: Search in name, mobile, email, or roll number
+    """
+    # Calculate skip
+    skip = (page - 1) * limit
+
+    # Create filter object
+    filters = StudentFilter(
+        status=status,
+        search=search
+    )
+
+    # Get students and total count
+    students, total = await get_students(
+        db,
+        branch_name=branch_name,
+        skip=skip,
+        limit=limit,
+        filters=filters
+    )
+
+    # Calculate total pages
+    total_pages = (total + limit - 1) // limit
+
+    return PaginatedStudentResponse(
+        total=total,
+        page=page,
+        limit=limit,
+        total_pages=total_pages,
+        students=students
+    )
+
+
+@str_router.put("/{student_id}", response_model=StudentResponse)
+async def update_student_profile_endpoint(
+        student_id: int,
+        student_update: StudentUpdate,
+        db: AsyncSession = Depends(get_db)
+):
+    """
+    Update student profile information.
+
+    - **student_id**: ID of student to update
+    - **student_update**: Fields to update
+    """
+    # Check if student exists
+    student = await get_student_by_id(db, student_id)
+    if not student:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Student not found"
+        )
+
+    # Update student profile
+    updated_student = await update_student_profile(db, student_id, student_update)
+    if not updated_student:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to update student profile"
+        )
+
+    return updated_student
+
+
+@str_router.post("/{student_id}/enroll-face", response_model=FaceEnrollmentResponse)
+async def enroll_student_face_endpoint(
+        student_id: int,
+        photo1: UploadFile = File(...),
+        photo2: UploadFile = File(...),
+        db: AsyncSession = Depends(get_db)
+):
+    """
+    Enroll student face with two photos for face recognition.
+
+    - **photo1**: First face photo (front-facing)
+    - **photo2**: Second face photo (different angle)
+    """
+    try:
+        # Check if student exists
+        student = await get_student_by_id(db, student_id)
+        if not student:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Student not found"
+            )
+
+        # Read photo bytes
+        photo1_bytes = await photo1.read()
+        photo2_bytes = await photo2.read()
+
+        # Process first photo
+        face_data1 = face_enrollment_service.process_face_photo(photo1_bytes)
+
+        # Process second photo
+        face_data2 = face_enrollment_service.process_face_photo(photo2_bytes)
+
+        # Validate that both photos are of the same person
+        validation_result = face_enrollment_service.validate_two_photos(
+            face_data1["embedding"],
+            face_data2["embedding"]
+        )
+
+        if not validation_result["validation_passed"]:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"Photos don't appear to be of the same person. Similarity: {validation_result['similarity_score']:.3f}"
+            )
+
+
+
+        # Save embeddings to database
+        enrolled_student = await enroll_student_face(
+            db,
+            student_id,
+            face_data1["embedding"],
+            face_data2["embedding"],
+
+        )
+
+        if not enrolled_student:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Failed to save face data"
+            )
+
+        return FaceEnrollmentResponse(
+            success=True,
+            message="Face enrollment successful",
+            student_id=student_id,
+            face_enrolled_date=enrolled_student.face_enrolled_date,
+
+        )
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Face enrollment failed: {str(e)}"
+        )
