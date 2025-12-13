@@ -1,6 +1,7 @@
 import os
 from fastapi import UploadFile, HTTPException, status
 from typing import Dict, Any, Optional, List, Tuple
+from app.services.face_recognition import get_face_service
 
 
 # Create a wrapper for your FaceService class
@@ -10,7 +11,8 @@ class FaceEnrollmentService:
         os.makedirs(upload_dir, exist_ok=True)
 
         # Import and initialize your FaceService
-        from app.services.face_recognition import face_service
+
+        face_service = get_face_service()
         self.face_service = face_service
 
 
