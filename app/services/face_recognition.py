@@ -1,3 +1,4 @@
+import os
 import time
 import logging
 from typing import List, Optional, Tuple, Dict, Any
@@ -6,21 +7,19 @@ from enum import Enum
 from pathlib import Path
 import io
 
+# Configure logging
+logger = logging.getLogger(__name__)
+
 # Dynamic imports with fallbacks
 try:
     import cv2
-
     CV2_AVAILABLE = True
-    logger = logging.getLogger(__name__)
-    logger.info("OpenCV loaded successfully")
 except ImportError as e:
     CV2_AVAILABLE = False
-    logger = logging.getLogger(__name__)
     logger.error(f"OpenCV not available: {e}")
 
 try:
     import numpy as np
-
     NUMPY_AVAILABLE = True
 except ImportError:
     NUMPY_AVAILABLE = False
@@ -28,17 +27,17 @@ except ImportError:
 
 try:
     from sklearn.metrics.pairwise import cosine_similarity
-
     SKLEARN_AVAILABLE = True
 except ImportError:
     SKLEARN_AVAILABLE = False
     logger.error("scikit-learn not available")
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+try:
+    import onnxruntime
+    ONNXRUNTIME_AVAILABLE = True
+except ImportError:
+    ONNXRUNTIME_AVAILABLE = False
+    logger.error("ONNX Runtime not available")
 
 
 class ModelType(str, Enum):
@@ -65,10 +64,11 @@ class ServiceConfig:
     min_face_size: int = 80
     max_image_dimension: int = 2000
     providers: List[str] = field(default_factory=lambda: ['CPUExecutionProvider'])
-    model_cache_dir: str = "/tmp/.insightface/models"
+    model_cache_dir: str = "./.insightface_models"
     enable_quality_check: bool = True
     max_retries: int = 3
     retry_delay: float = 2.0
+    download_models: bool = True
 
 
 @dataclass
@@ -112,6 +112,9 @@ class FaceService:
         self.app = None
         self.status = ServiceStatus.INITIALIZING
         self._insightface_available = False
+        self.initialization_error = None
+
+        logger.info(f"Initializing FaceService with model: {self.config.model_name}")
 
         # Check basic dependencies
         self._check_dependencies()
@@ -124,84 +127,140 @@ class FaceService:
         if not CV2_AVAILABLE:
             logger.error("OpenCV is not available. Please install opencv-python-headless")
             self.status = ServiceStatus.ERROR
+            self.initialization_error = "OpenCV not installed"
             return False
 
         if not NUMPY_AVAILABLE:
             logger.error("NumPy is not available")
             self.status = ServiceStatus.ERROR
+            self.initialization_error = "NumPy not installed"
+            return False
+
+        if not ONNXRUNTIME_AVAILABLE:
+            logger.error("ONNX Runtime is not available. Please install onnxruntime")
+            self.status = ServiceStatus.ERROR
+            self.initialization_error = "ONNX Runtime not installed"
             return False
 
         if not SKLEARN_AVAILABLE:
-            logger.error("scikit-learn is not available")
-            self.status = ServiceStatus.ERROR
-            return False
+            logger.warning("scikit-learn is not available - using alternative cosine similarity")
 
         return True
+
+    def _download_models_if_needed(self):
+        """Download models if they don't exist"""
+        try:
+            from insightface.model_zoo import get_model
+            model_path = Path(self.config.model_cache_dir) / self.config.model_name.value
+            model_path.mkdir(parents=True, exist_ok=True)
+
+            # Check if model files exist
+            required_files = ['det_10g.onnx', 'w600k_r50.onnx', 'genderage.onnx']
+            existing_files = [f for f in model_path.iterdir() if f.is_file()]
+
+            if len(existing_files) < 3 and self.config.download_models:
+                logger.info("Downloading face recognition models...")
+                # This will trigger download
+                model = get_model(self.config.model_name.value, root=self.config.model_cache_dir)
+                if model:
+                    logger.info("Models downloaded successfully")
+                else:
+                    logger.warning("Model download returned None")
+        except Exception as e:
+            logger.warning(f"Model download check failed: {e}")
 
     def _initialize(self):
         """Initialize the face analysis service"""
         try:
-            logger.info(f"🚀 Initializing FaceService with model: {self.config.model_name}")
-
-            # Try to import insightface
-            try:
-                from insightface.app import FaceAnalysis
-                self._insightface_available = True
-                logger.info("InsightFace imported successfully")
-            except ImportError as e:
-                logger.error(f"Failed to import InsightFace: {e}")
-                self.status = ServiceStatus.ERROR
-                return
-
-            # Ensure model directory exists
+            # Ensure model directory exists with proper permissions
             model_dir = Path(self.config.model_cache_dir)
             model_dir.mkdir(parents=True, exist_ok=True)
-            logger.info(f"Model directory: {model_dir}")
+            logger.info(f"Model directory: {model_dir.absolute()}")
 
-            # Initialize with retries
+            # Set environment variable for model cache
+            os.environ['INSIGHTFACE_MODELS_ROOT'] = str(model_dir)
+
+            # Download models if needed
+            self._download_models_if_needed()
+
+            # Try to import insightface with retries
             for attempt in range(self.config.max_retries):
                 try:
-                    logger.info(f"Attempt {attempt + 1}/{self.config.max_retries}")
+                    logger.info(f"Attempt {attempt + 1}/{self.config.max_retries} to import InsightFace")
 
+                    from insightface.app import FaceAnalysis
+                    self._insightface_available = True
+
+                    # Initialize with simpler configuration first
+                    logger.info(f"Initializing FaceAnalysis with model: {self.config.model_name.value}")
                     self.app = FaceAnalysis(
                         name=self.config.model_name.value,
                         providers=self.config.providers,
                         root=str(model_dir)
                     )
 
+                    # Prepare with basic settings
+                    logger.info("Preparing FaceAnalysis model...")
                     self.app.prepare(
-                        ctx_id=-1,  # CPU
+                        ctx_id=0,  # First CPU device
                         det_thresh=self.config.detection_threshold,
                         det_size=self.config.detection_size
                     )
 
-                    # Simple test
+                    # Test with a simple image
+                    logger.info("Testing model with sample image...")
                     test_img = np.ones((100, 100, 3), dtype=np.uint8) * 128
-                    _ = self.app.get(test_img)
+                    test_faces = self.app.get(test_img)
+                    logger.info(f"Test successful - detected {len(test_faces)} faces")
 
                     self.status = ServiceStatus.READY
-                    logger.info("✅ FaceService initialized successfully")
+                    logger.info("FaceService initialized successfully")
+                    return
+
+                except ImportError as e:
+                    logger.error(f"InsightFace import failed: {e}")
+                    logger.info("Try installing: pip install insightface")
+                    self.initialization_error = f"Missing package: {str(e)}"
+                    self.status = ServiceStatus.ERROR
                     return
 
                 except Exception as e:
-                    logger.error(f"Attempt {attempt + 1} failed: {e}")
+                    logger.error(f"Initialization attempt {attempt + 1} failed: {str(e)}")
 
                     if attempt < self.config.max_retries - 1:
                         time.sleep(self.config.retry_delay)
-                        # Try smaller model on retry
+                        # Try smaller model on retry if using buffalo_l
                         if self.config.model_name == ModelType.BUFFALO_L:
                             self.config.model_name = ModelType.BUFFALO_S
+                            logger.info(f"Switching to smaller model: {self.config.model_name}")
                     else:
                         logger.error("All initialization attempts failed")
+                        self.initialization_error = str(e)
                         self.status = ServiceStatus.ERROR
 
         except Exception as e:
-            logger.error(f"Critical initialization error: {e}")
+            logger.error(f"Critical initialization error: {str(e)}")
+            self.initialization_error = str(e)
             self.status = ServiceStatus.ERROR
 
     def is_ready(self) -> bool:
         """Check if service is ready to process requests"""
         return self.status == ServiceStatus.READY and self.app is not None
+
+    def get_status(self) -> Dict[str, Any]:
+        """Get detailed service status"""
+        return {
+            "status": self.status.value,
+            "model": self.config.model_name.value,
+            "error": self.initialization_error,
+            "dependencies": {
+                "opencv": CV2_AVAILABLE,
+                "numpy": NUMPY_AVAILABLE,
+                "sklearn": SKLEARN_AVAILABLE,
+                "onnxruntime": ONNXRUNTIME_AVAILABLE,
+                "insightface": self._insightface_available
+            }
+        }
 
     def load_image(self, image_bytes: bytes) -> Optional[np.ndarray]:
         """
@@ -437,7 +496,17 @@ class FaceService:
             emb2 = np.array(embedding2, dtype=np.float32).reshape(1, -1)
 
             # Calculate similarity
-            similarity = cosine_similarity(emb1, emb2)[0][0]
+            if SKLEARN_AVAILABLE:
+                similarity = cosine_similarity(emb1, emb2)[0][0]
+            else:
+                # Fallback cosine similarity calculation
+                norm1 = np.linalg.norm(emb1)
+                norm2 = np.linalg.norm(emb2)
+                if norm1 == 0 or norm2 == 0:
+                    similarity = 0.0
+                else:
+                    similarity = np.dot(emb1.flatten(), emb2.flatten()) / (norm1 * norm2)
+
             is_match = similarity > threshold
 
             processing_time = (time.time() - start_time) * 1000
@@ -454,8 +523,10 @@ class FaceService:
             raise FaceServiceError(f"Face comparison failed: {str(e)}")
 
 
-# Singleton instance
+# Singleton instance with health check
 _face_service_instance = None
+_last_health_check = 0
+_HEALTH_CHECK_INTERVAL = 300  # 5 minutes
 
 
 def get_face_service() -> FaceService:
@@ -465,8 +536,32 @@ def get_face_service() -> FaceService:
     Returns:
         FaceService instance
     """
-    global _face_service_instance
+    global _face_service_instance, _last_health_check
 
+    current_time = time.time()
+
+    # Check if we need to reinitialize (service in error state for a while)
+    if _face_service_instance is not None:
+        if _face_service_instance.status == ServiceStatus.ERROR:
+            if current_time - _last_health_check > _HEALTH_CHECK_INTERVAL:
+                logger.warning("Face service in error state, attempting reinitialization...")
+                try:
+                    config = ServiceConfig(
+                        model_name=ModelType.BUFFALO_S,
+                        detection_threshold=0.35,
+                        detection_size=(640, 640),
+                        recognition_threshold=0.6,
+                        model_cache_dir="./.insightface_models",
+                        download_models=True
+                    )
+                    _face_service_instance = FaceService(config)
+                    _last_health_check = current_time
+                except Exception as e:
+                    logger.error(f"Reinitialization failed: {e}")
+        else:
+            _last_health_check = current_time
+
+    # Create new instance if none exists
     if _face_service_instance is None:
         try:
             config = ServiceConfig(
@@ -474,9 +569,11 @@ def get_face_service() -> FaceService:
                 detection_threshold=0.35,
                 detection_size=(640, 640),
                 recognition_threshold=0.6,
-                model_cache_dir="/tmp/.insightface/models"
+                model_cache_dir="./.insightface_models",
+                download_models=True
             )
             _face_service_instance = FaceService(config)
+            _last_health_check = current_time
         except Exception as e:
             logger.error(f"Failed to create FaceService: {e}")
             _face_service_instance = None

@@ -1,0 +1,177 @@
+2025-12-14 19:10:32,311 - sqlalchemy.engine.Engine - INFO - SELECT DATABASE()
+2025-12-14 19:10:32,312 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:10:32,318 - sqlalchemy.engine.Engine - INFO - SELECT @@sql_mode
+2025-12-14 19:10:32,318 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:10:32,320 - sqlalchemy.engine.Engine - INFO - SELECT @@lower_case_table_names
+2025-12-14 19:10:32,321 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:10:32,326 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 19:10:32,328 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_admin`
+2025-12-14 19:10:32,329 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:10:32,384 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_offline`
+2025-12-14 19:10:32,386 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:10:32,390 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`attendance_records`
+2025-12-14 19:10:32,392 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:10:32,395 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-12-14 19:10:32,851 - app.services.face_recognition - INFO - Model directory: C:\Users\amank\PycharmProjects\new_project\.insightface_models
+2025-12-14 19:10:43,019 - app.services.face_recognition - WARNING - Model download check failed: Unable to import dependency onnxruntime. 
+2025-12-14 19:10:43,021 - app.services.face_recognition - INFO - Attempt 1/3 to import InsightFace
+2025-12-14 19:10:52,254 - app.services.face_recognition - ERROR - InsightFace import failed: Unable to import dependency onnxruntime. 
+2025-12-14 19:10:52,255 - app.services.face_recognition - INFO - Try installing: pip install insightface
+2025-12-14 19:11:39,463 - sqlalchemy.engine.Engine - INFO - SELECT DATABASE()
+2025-12-14 19:11:39,464 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:11:39,465 - sqlalchemy.engine.Engine - INFO - SELECT @@sql_mode
+2025-12-14 19:11:39,465 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:11:39,466 - sqlalchemy.engine.Engine - INFO - SELECT @@lower_case_table_names
+2025-12-14 19:11:39,467 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:11:39,468 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 19:11:39,469 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_admin`
+2025-12-14 19:11:39,469 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:11:39,476 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_offline`
+2025-12-14 19:11:39,477 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:11:39,479 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`attendance_records`
+2025-12-14 19:11:39,479 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:11:39,481 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-12-14 19:11:39,489 - app.services.face_recognition - INFO - Model directory: C:\Users\amank\PycharmProjects\new_project\.insightface_models
+2025-12-14 19:11:48,048 - app.services.face_recognition - WARNING - Model download check failed: Unable to import dependency onnxruntime. 
+2025-12-14 19:11:48,049 - app.services.face_recognition - INFO - Attempt 1/3 to import InsightFace
+2025-12-14 19:11:56,631 - app.services.face_recognition - ERROR - InsightFace import failed: Unable to import dependency onnxruntime. 
+2025-12-14 19:11:56,632 - app.services.face_recognition - INFO - Try installing: pip install insightface
+2025-12-14 19:15:20,924 - app.api.v1.attendance - INFO - Face attendance request received for branch: 3
+2025-12-14 19:15:20,925 - app.api.v1.attendance - INFO - Face service status: error
+2025-12-14 19:15:20,925 - app.api.v1.attendance - ERROR - Face service in ERROR state: Missing package: Unable to import dependency onnxruntime. 
+2025-12-14 19:15:20,925 - app.api.v1.attendance - ERROR - HTTP Exception in face attendance: {'message': 'Face recognition service is not available', 'error': 'Missing package: Unable to import dependency onnxruntime. ', 'action': 'Please check that insightface and onnxruntime are properly installed', 'error_type': 'service_error'}
+2025-12-14 19:20:00,767 - sqlalchemy.engine.Engine - INFO - SELECT DATABASE()
+2025-12-14 19:20:00,768 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:20:00,769 - sqlalchemy.engine.Engine - INFO - SELECT @@sql_mode
+2025-12-14 19:20:00,769 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:20:00,770 - sqlalchemy.engine.Engine - INFO - SELECT @@lower_case_table_names
+2025-12-14 19:20:00,770 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:20:00,771 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 19:20:00,772 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_admin`
+2025-12-14 19:20:00,772 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:20:00,776 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_offline`
+2025-12-14 19:20:00,777 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:20:00,779 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`attendance_records`
+2025-12-14 19:20:00,780 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:20:00,782 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-12-14 19:20:00,791 - app.services.face_recognition - INFO - Model directory: C:\Users\amank\PycharmProjects\new_project\.insightface_models
+2025-12-14 19:20:10,597 - app.services.face_recognition - WARNING - Model download check failed: Unable to import dependency onnxruntime. 
+2025-12-14 19:20:10,597 - app.services.face_recognition - INFO - Attempt 1/3 to import InsightFace
+2025-12-14 19:20:19,161 - app.services.face_recognition - ERROR - InsightFace import failed: Unable to import dependency onnxruntime. 
+2025-12-14 19:20:19,162 - app.services.face_recognition - INFO - Try installing: pip install insightface
+2025-12-14 19:30:01,389 - sqlalchemy.engine.Engine - INFO - SELECT DATABASE()
+2025-12-14 19:30:01,389 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:30:01,390 - sqlalchemy.engine.Engine - INFO - SELECT @@sql_mode
+2025-12-14 19:30:01,390 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:30:01,391 - sqlalchemy.engine.Engine - INFO - SELECT @@lower_case_table_names
+2025-12-14 19:30:01,391 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:30:01,393 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 19:30:01,393 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_admin`
+2025-12-14 19:30:01,393 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:30:01,397 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_offline`
+2025-12-14 19:30:01,397 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:30:01,400 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`attendance_records`
+2025-12-14 19:30:01,401 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:30:01,405 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-12-14 19:30:01,406 - app.services.face_recognition - INFO - 🚀 Initializing FaceService with model: buffalo_s
+2025-12-14 19:30:01,407 - app.services.face_recognition - INFO - Model directory: C:\Users\amank\PycharmProjects\new_project\.insightface_models
+2025-12-14 19:30:09,195 - app.services.face_recognition - WARNING - Model download check failed: Unable to import dependency onnxruntime. 
+2025-12-14 19:30:09,195 - app.services.face_recognition - INFO - Attempt 1/3 to import InsightFace
+2025-12-14 19:30:13,320 - app.services.face_recognition - ERROR - InsightFace import failed: Unable to import dependency onnxruntime. 
+2025-12-14 19:30:13,321 - app.services.face_recognition - INFO - Try installing: pip install insightface
+2025-12-14 19:33:15,540 - sqlalchemy.engine.Engine - INFO - SELECT DATABASE()
+2025-12-14 19:33:15,541 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:33:15,543 - sqlalchemy.engine.Engine - INFO - SELECT @@sql_mode
+2025-12-14 19:33:15,544 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:33:15,546 - sqlalchemy.engine.Engine - INFO - SELECT @@lower_case_table_names
+2025-12-14 19:33:15,547 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:33:15,550 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 19:33:15,551 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_admin`
+2025-12-14 19:33:15,552 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:33:15,568 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_offline`
+2025-12-14 19:33:15,569 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:33:15,573 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`attendance_records`
+2025-12-14 19:33:15,574 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:33:15,578 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-12-14 19:33:15,582 - app.services.face_recognition - INFO - Initializing FaceService with model: buffalo_s
+2025-12-14 19:33:15,583 - app.services.face_recognition - INFO - Model directory: C:\Users\amank\PycharmProjects\new_project\.insightface_models
+2025-12-14 19:33:19,722 - app.services.face_recognition - INFO - Downloading face recognition models...
+2025-12-14 19:33:19,724 - app.services.face_recognition - WARNING - Model download returned None
+2025-12-14 19:33:19,725 - app.services.face_recognition - INFO - Attempt 1/3 to import InsightFace
+2025-12-14 19:33:19,725 - app.services.face_recognition - INFO - Initializing FaceAnalysis with model: buffalo_s
+2025-12-14 19:33:51,902 - app.services.face_recognition - INFO - Preparing FaceAnalysis model...
+2025-12-14 19:33:51,903 - app.services.face_recognition - INFO - Testing model with sample image...
+2025-12-14 19:33:51,922 - app.services.face_recognition - INFO - Test successful - detected 0 faces
+2025-12-14 19:33:51,922 - app.services.face_recognition - INFO - FaceService initialized successfully
+2025-12-14 19:33:54,923 - app.main - INFO - Face service status: {'status': 'ready', 'model': 'buffalo_s', 'error': None, 'dependencies': {'opencv': True, 'numpy': True, 'sklearn': True, 'onnxruntime': True, 'insightface': True}}
+2025-12-14 19:33:56,397 - sqlalchemy.engine.Engine - INFO - SELECT DATABASE()
+2025-12-14 19:33:56,398 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:33:56,399 - sqlalchemy.engine.Engine - INFO - SELECT @@sql_mode
+2025-12-14 19:33:56,399 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:33:56,400 - sqlalchemy.engine.Engine - INFO - SELECT @@lower_case_table_names
+2025-12-14 19:33:56,400 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:33:56,402 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 19:33:56,402 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_admin`
+2025-12-14 19:33:56,403 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:33:56,409 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_offline`
+2025-12-14 19:33:56,409 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:33:56,411 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`attendance_records`
+2025-12-14 19:33:56,412 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:33:56,414 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-12-14 19:33:56,415 - app.services.face_recognition - INFO - Initializing FaceService with model: buffalo_s
+2025-12-14 19:33:56,416 - app.services.face_recognition - INFO - Model directory: C:\Users\amank\PycharmProjects\new_project\.insightface_models
+2025-12-14 19:33:57,005 - app.services.face_recognition - INFO - Downloading face recognition models...
+2025-12-14 19:33:57,057 - app.services.face_recognition - INFO - Models downloaded successfully
+2025-12-14 19:33:57,092 - app.services.face_recognition - INFO - Attempt 1/3 to import InsightFace
+2025-12-14 19:33:57,093 - app.services.face_recognition - INFO - Initializing FaceAnalysis with model: buffalo_s
+2025-12-14 19:33:57,750 - app.services.face_recognition - INFO - Preparing FaceAnalysis model...
+2025-12-14 19:33:57,750 - app.services.face_recognition - INFO - Testing model with sample image...
+2025-12-14 19:33:57,778 - app.services.face_recognition - INFO - Test successful - detected 0 faces
+2025-12-14 19:33:57,778 - app.services.face_recognition - INFO - FaceService initialized successfully
+2025-12-14 19:34:00,787 - app.main - INFO - Face service status: {'status': 'ready', 'model': 'buffalo_s', 'error': None, 'dependencies': {'opencv': True, 'numpy': True, 'sklearn': True, 'onnxruntime': True, 'insightface': True}}
+2025-12-14 19:34:42,571 - app.api.v1.attendance - INFO - Face attendance request received for branch: 3
+2025-12-14 19:34:42,572 - app.api.v1.attendance - INFO - Face service status: ready
+2025-12-14 19:34:42,572 - app.api.v1.attendance - INFO - 
+============================================================
+2025-12-14 19:34:42,572 - app.api.v1.attendance - INFO - 📸 FACE ATTENDANCE - Started
+2025-12-14 19:34:42,572 - app.api.v1.attendance - INFO - ============================================================
+2025-12-14 19:34:42,573 - app.api.v1.attendance - INFO - Image read: 56549 bytes
+2025-12-14 19:34:42,573 - app.api.v1.attendance - INFO - Processing image with face detection
+2025-12-14 19:34:42,755 - app.services.face_recognition - INFO - Processed image: 1 face(s) in 181.5ms
+2025-12-14 19:34:42,755 - app.api.v1.attendance - INFO - Face detection result - success: True, faces: 1
+2025-12-14 19:34:42,756 - app.api.v1.attendance - INFO - Face embedding extracted: 512 dimensions
+2025-12-14 19:34:42,756 - app.api.v1.attendance - INFO - Fetching enrolled students for branch: 3
+2025-12-14 19:34:42,760 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 19:34:42,771 - sqlalchemy.engine.Engine - INFO - SELECT wifi_offline.dlb_sty_id, wifi_offline.dlb_a_id, wifi_offline.dlb_sty_name, wifi_offline.dlb_sty_email, wifi_offline.dlb_sty_mobile, wifi_offline.dlb_sty_mother, wifi_offline.dlb_sty_father, wifi_offline.dlb_parents_number, wifi_offline.dlb_sty_address, wifi_offline.dlb_zipcode, wifi_offline.dlb_offline_name, wifi_offline.dlb_center_name, wifi_offline.dlb_sty_batch, wifi_offline.dlb_sty_exam, wifi_offline.dlb_total_fees, wifi_offline.dlb_final_fees, wifi_offline.dlb_remark, wifi_offline.dlb_sty_image, wifi_offline.dlb_sty_status, wifi_offline.dlb_sty_activedate, wifi_offline.dlb_sty_created_date, wifi_offline.dlb_order_id, wifi_offline.`sendFeedback`, wifi_offline.`feedbackLoop`, wifi_offline.dlb_call_status, wifi_offline.dlb_call_mark, wifi_offline.dlb_call_activate_date, wifi_offline.send_feedback_date, wifi_offline.dlb_sty_session, wifi_offline.dlb_roll_number, wifi_offline.dlb_event, wifi_offline.face_photo1, wifi_offline.face_photo2, wifi_offline.face_embedding1, wifi_offline.face_embedding2, wifi_offline.face_enrolled_date 
+FROM wifi_offline 
+WHERE wifi_offline.dlb_offline_name = %s AND (wifi_offline.face_embedding1 IS NOT NULL OR wifi_offline.face_embedding2 IS NOT NULL)
+2025-12-14 19:34:42,771 - sqlalchemy.engine.Engine - INFO - [generated in 0.00075s] ('3',)
+2025-12-14 19:34:42,857 - app.api.v1.attendance - INFO - Found 1 enrolled students
+2025-12-14 19:34:42,857 - app.api.v1.attendance - INFO - Processed 1 students with valid embeddings
+2025-12-14 19:34:42,857 - app.api.v1.attendance - INFO - Starting face matching process...
+2025-12-14 19:34:42,859 - app.api.v1.attendance - INFO - Best match - Student ID: 4254, Similarity: 0.721
+2025-12-14 19:34:42,859 - app.api.v1.attendance - INFO - Matched student: Prashant Bharwaj (Roll: )
+2025-12-14 19:34:42,860 - sqlalchemy.engine.Engine - INFO - SELECT attendance_records.attendance_id, attendance_records.student_id, attendance_records.student_name, attendance_records.branch_name, attendance_records.attendance_date, attendance_records.attendance_time, attendance_records.created_at 
+FROM attendance_records 
+WHERE attendance_records.student_id = %s AND attendance_records.attendance_date = %s ORDER BY attendance_records.attendance_time
+2025-12-14 19:34:42,861 - sqlalchemy.engine.Engine - INFO - [generated in 0.00051s] (4254, datetime.date(2025, 12, 14))
+2025-12-14 19:34:42,875 - sqlalchemy.engine.Engine - INFO - INSERT INTO attendance_records (student_id, student_name, branch_name, attendance_date, attendance_time, created_at) VALUES (%s, %s, %s, %s, %s, %s)
+2025-12-14 19:34:42,876 - sqlalchemy.engine.Engine - INFO - [generated in 0.00065s] (4254, 'Prashant Bharwaj', '3', datetime.date(2025, 12, 14), datetime.datetime(2025, 12, 14, 19, 34, 42, 859251), datetime.datetime(2025, 12, 14, 19, 34, 42, 859251))
+2025-12-14 19:34:42,898 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-12-14 19:34:42,915 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 19:34:42,918 - sqlalchemy.engine.Engine - INFO - SELECT attendance_records.attendance_id, attendance_records.student_id, attendance_records.student_name, attendance_records.branch_name, attendance_records.attendance_date, attendance_records.attendance_time, attendance_records.created_at 
+FROM attendance_records 
+WHERE attendance_records.attendance_id = %s
+2025-12-14 19:34:42,918 - sqlalchemy.engine.Engine - INFO - [generated in 0.00068s] (3,)
+2025-12-14 19:34:42,920 - app.api.v1.attendance - INFO - Attendance recorded successfully for student 4254 at 2025-12-14 19:34:42.859251
+2025-12-14 19:34:42,920 - app.api.v1.attendance - INFO - 
+           ATTENDANCE RECORDED:
+           Student: Prashant Bharwaj (ID: 4254)
+           Roll: 
+           Branch: 3
+           Similarity: 0.721
+           Attendance Time: 2025-12-14 19:34:42
+           Today's Entries: 1
+           Total Duration Today: 0.00 hours
+        
+2025-12-14 19:34:42,923 - sqlalchemy.engine.Engine - INFO - COMMIT

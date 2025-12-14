@@ -3,7 +3,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import func, and_, or_
 from typing import List, Optional, Dict
 from datetime import datetime, date, timedelta
-import json
 
 from app.models.attendance import AttendanceRecord
 from app.models.student import WifiOffline
