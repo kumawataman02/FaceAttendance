@@ -175,3 +175,200 @@ WHERE attendance_records.attendance_id = %s
            Total Duration Today: 0.00 hours
         
 2025-12-14 19:34:42,923 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-12-14 19:54:02,308 - sqlalchemy.engine.Engine - INFO - SELECT DATABASE()
+2025-12-14 19:54:02,309 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:54:02,312 - sqlalchemy.engine.Engine - INFO - SELECT @@sql_mode
+2025-12-14 19:54:02,313 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:54:02,314 - sqlalchemy.engine.Engine - INFO - SELECT @@lower_case_table_names
+2025-12-14 19:54:02,314 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:54:02,318 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 19:54:02,318 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_admin`
+2025-12-14 19:54:02,318 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:54:02,355 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_offline`
+2025-12-14 19:54:02,356 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:54:02,359 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`attendance_records`
+2025-12-14 19:54:02,360 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 19:54:02,362 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-12-14 19:54:02,364 - app.services.face_recognition - INFO - Initializing FaceService with model: buffalo_s
+2025-12-14 19:54:02,365 - app.services.face_recognition - INFO - Model directory: C:\Users\amank\PycharmProjects\new_project\.insightface_models
+2025-12-14 19:54:03,270 - app.services.face_recognition - INFO - Downloading face recognition models...
+2025-12-14 19:54:03,351 - app.services.face_recognition - INFO - Models downloaded successfully
+2025-12-14 19:54:03,355 - app.services.face_recognition - INFO - Attempt 1/3 to import InsightFace
+2025-12-14 19:54:03,355 - app.services.face_recognition - INFO - Initializing FaceAnalysis with model: buffalo_s
+2025-12-14 19:54:04,199 - app.services.face_recognition - INFO - Preparing FaceAnalysis model...
+2025-12-14 19:54:04,200 - app.services.face_recognition - INFO - Testing model with sample image...
+2025-12-14 19:54:04,227 - app.services.face_recognition - INFO - Test successful - detected 0 faces
+2025-12-14 19:54:04,228 - app.services.face_recognition - INFO - FaceService initialized successfully
+2025-12-14 19:54:07,230 - app.main - INFO - Face service status: {'status': 'ready', 'model': 'buffalo_s', 'error': None, 'dependencies': {'opencv': True, 'numpy': True, 'sklearn': True, 'onnxruntime': True, 'insightface': True}}
+2025-12-14 20:22:40,815 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 20:22:40,830 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT wifi_offline.dlb_sty_id AS dlb_sty_id, wifi_offline.dlb_a_id AS dlb_a_id, wifi_offline.dlb_sty_name AS dlb_sty_name, wifi_offline.dlb_sty_email AS dlb_sty_email, wifi_offline.dlb_sty_mobile AS dlb_sty_mobile, wifi_offline.dlb_sty_mother AS dlb_sty_mother, wifi_offline.dlb_sty_father AS dlb_sty_father, wifi_offline.dlb_parents_number AS dlb_parents_number, wifi_offline.dlb_sty_address AS dlb_sty_address, wifi_offline.dlb_zipcode AS dlb_zipcode, wifi_offline.dlb_offline_name AS dlb_offline_name, wifi_offline.dlb_center_name AS dlb_center_name, wifi_offline.dlb_sty_batch AS dlb_sty_batch, wifi_offline.dlb_sty_exam AS dlb_sty_exam, wifi_offline.dlb_total_fees AS dlb_total_fees, wifi_offline.dlb_final_fees AS dlb_final_fees, wifi_offline.dlb_remark AS dlb_remark, wifi_offline.dlb_sty_image AS dlb_sty_image, wifi_offline.dlb_sty_status AS dlb_sty_status, wifi_offline.dlb_sty_activedate AS dlb_sty_activedate, wifi_offline.dlb_sty_created_date AS dlb_sty_created_date, wifi_offline.dlb_order_id AS dlb_order_id, wifi_offline.`sendFeedback` AS `sendFeedback`, wifi_offline.`feedbackLoop` AS `feedbackLoop`, wifi_offline.dlb_call_status AS dlb_call_status, wifi_offline.dlb_call_mark AS dlb_call_mark, wifi_offline.dlb_call_activate_date AS dlb_call_activate_date, wifi_offline.send_feedback_date AS send_feedback_date, wifi_offline.dlb_sty_session AS dlb_sty_session, wifi_offline.dlb_roll_number AS dlb_roll_number, wifi_offline.dlb_event AS dlb_event, wifi_offline.face_photo1 AS face_photo1, wifi_offline.face_photo2 AS face_photo2, wifi_offline.face_embedding1 AS face_embedding1, wifi_offline.face_embedding2 AS face_embedding2, wifi_offline.face_enrolled_date AS face_enrolled_date 
+FROM wifi_offline 
+WHERE wifi_offline.dlb_offline_name = %s) AS anon_1
+2025-12-14 20:22:40,830 - sqlalchemy.engine.Engine - INFO - [generated in 0.00092s] ('2',)
+2025-12-14 20:22:40,845 - sqlalchemy.engine.Engine - INFO - SELECT wifi_offline.dlb_sty_id, wifi_offline.dlb_a_id, wifi_offline.dlb_sty_name, wifi_offline.dlb_sty_email, wifi_offline.dlb_sty_mobile, wifi_offline.dlb_sty_mother, wifi_offline.dlb_sty_father, wifi_offline.dlb_parents_number, wifi_offline.dlb_sty_address, wifi_offline.dlb_zipcode, wifi_offline.dlb_offline_name, wifi_offline.dlb_center_name, wifi_offline.dlb_sty_batch, wifi_offline.dlb_sty_exam, wifi_offline.dlb_total_fees, wifi_offline.dlb_final_fees, wifi_offline.dlb_remark, wifi_offline.dlb_sty_image, wifi_offline.dlb_sty_status, wifi_offline.dlb_sty_activedate, wifi_offline.dlb_sty_created_date, wifi_offline.dlb_order_id, wifi_offline.`sendFeedback`, wifi_offline.`feedbackLoop`, wifi_offline.dlb_call_status, wifi_offline.dlb_call_mark, wifi_offline.dlb_call_activate_date, wifi_offline.send_feedback_date, wifi_offline.dlb_sty_session, wifi_offline.dlb_roll_number, wifi_offline.dlb_event, wifi_offline.face_photo1, wifi_offline.face_photo2, wifi_offline.face_embedding1, wifi_offline.face_embedding2, wifi_offline.face_enrolled_date 
+FROM wifi_offline 
+WHERE wifi_offline.dlb_offline_name = %s ORDER BY wifi_offline.dlb_sty_created_date DESC 
+ LIMIT %s, %s
+2025-12-14 20:22:40,845 - sqlalchemy.engine.Engine - INFO - [generated in 0.00072s] ('2', 0, 10)
+2025-12-14 20:22:40,856 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-12-14 20:22:40,860 - app.main - ERROR - Unhandled exception: 10 validation errors for PaginatedStudentResponse
+students -> 0
+  value is not a valid dict (type=type_error.dict)
+students -> 1
+  value is not a valid dict (type=type_error.dict)
+students -> 2
+  value is not a valid dict (type=type_error.dict)
+students -> 3
+  value is not a valid dict (type=type_error.dict)
+students -> 4
+  value is not a valid dict (type=type_error.dict)
+students -> 5
+  value is not a valid dict (type=type_error.dict)
+students -> 6
+  value is not a valid dict (type=type_error.dict)
+students -> 7
+  value is not a valid dict (type=type_error.dict)
+students -> 8
+  value is not a valid dict (type=type_error.dict)
+students -> 9
+  value is not a valid dict (type=type_error.dict)
+2025-12-14 20:37:26,384 - sqlalchemy.engine.Engine - INFO - SELECT DATABASE()
+2025-12-14 20:37:26,384 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 20:37:26,385 - sqlalchemy.engine.Engine - INFO - SELECT @@sql_mode
+2025-12-14 20:37:26,386 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 20:37:26,386 - sqlalchemy.engine.Engine - INFO - SELECT @@lower_case_table_names
+2025-12-14 20:37:26,386 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 20:37:26,387 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 20:37:26,387 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_admin`
+2025-12-14 20:37:26,387 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 20:37:26,395 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_offline`
+2025-12-14 20:37:26,395 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 20:37:26,397 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`attendance_records`
+2025-12-14 20:37:26,398 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 20:37:26,399 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-12-14 20:37:26,400 - app.services.face_recognition - INFO - Initializing FaceService with model: buffalo_s
+2025-12-14 20:37:26,401 - app.services.face_recognition - INFO - Model directory: C:\Users\amank\PycharmProjects\new_project\.insightface_models
+2025-12-14 20:37:27,097 - app.services.face_recognition - INFO - Downloading face recognition models...
+2025-12-14 20:37:27,142 - app.services.face_recognition - INFO - Models downloaded successfully
+2025-12-14 20:37:27,146 - app.services.face_recognition - INFO - Attempt 1/3 to import InsightFace
+2025-12-14 20:37:27,146 - app.services.face_recognition - INFO - Initializing FaceAnalysis with model: buffalo_s
+2025-12-14 20:37:27,906 - app.services.face_recognition - INFO - Preparing FaceAnalysis model...
+2025-12-14 20:37:27,906 - app.services.face_recognition - INFO - Testing model with sample image...
+2025-12-14 20:37:27,930 - app.services.face_recognition - INFO - Test successful - detected 0 faces
+2025-12-14 20:37:27,930 - app.services.face_recognition - INFO - FaceService initialized successfully
+2025-12-14 20:37:30,938 - app.main - INFO - Face service status: {'status': 'ready', 'model': 'buffalo_s', 'error': None, 'dependencies': {'opencv': True, 'numpy': True, 'sklearn': True, 'onnxruntime': True, 'insightface': True}}
+2025-12-14 20:37:40,947 - app.api.v1.students - INFO - Fetching students for branch: 2, page: 1, limit: 10, status: None, search: None
+2025-12-14 20:37:40,954 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 20:37:40,970 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT wifi_offline.dlb_sty_id AS dlb_sty_id, wifi_offline.dlb_a_id AS dlb_a_id, wifi_offline.dlb_sty_name AS dlb_sty_name, wifi_offline.dlb_sty_email AS dlb_sty_email, wifi_offline.dlb_sty_mobile AS dlb_sty_mobile, wifi_offline.dlb_sty_mother AS dlb_sty_mother, wifi_offline.dlb_sty_father AS dlb_sty_father, wifi_offline.dlb_parents_number AS dlb_parents_number, wifi_offline.dlb_sty_address AS dlb_sty_address, wifi_offline.dlb_zipcode AS dlb_zipcode, wifi_offline.dlb_offline_name AS dlb_offline_name, wifi_offline.dlb_center_name AS dlb_center_name, wifi_offline.dlb_sty_batch AS dlb_sty_batch, wifi_offline.dlb_sty_exam AS dlb_sty_exam, wifi_offline.dlb_total_fees AS dlb_total_fees, wifi_offline.dlb_final_fees AS dlb_final_fees, wifi_offline.dlb_remark AS dlb_remark, wifi_offline.dlb_sty_image AS dlb_sty_image, wifi_offline.dlb_sty_status AS dlb_sty_status, wifi_offline.dlb_sty_activedate AS dlb_sty_activedate, wifi_offline.dlb_sty_created_date AS dlb_sty_created_date, wifi_offline.dlb_order_id AS dlb_order_id, wifi_offline.`sendFeedback` AS `sendFeedback`, wifi_offline.`feedbackLoop` AS `feedbackLoop`, wifi_offline.dlb_call_status AS dlb_call_status, wifi_offline.dlb_call_mark AS dlb_call_mark, wifi_offline.dlb_call_activate_date AS dlb_call_activate_date, wifi_offline.send_feedback_date AS send_feedback_date, wifi_offline.dlb_sty_session AS dlb_sty_session, wifi_offline.dlb_roll_number AS dlb_roll_number, wifi_offline.dlb_event AS dlb_event, wifi_offline.face_photo1 AS face_photo1, wifi_offline.face_photo2 AS face_photo2, wifi_offline.face_embedding1 AS face_embedding1, wifi_offline.face_embedding2 AS face_embedding2, wifi_offline.face_enrolled_date AS face_enrolled_date 
+FROM wifi_offline 
+WHERE wifi_offline.dlb_offline_name = %s) AS anon_1
+2025-12-14 20:37:40,971 - sqlalchemy.engine.Engine - INFO - [generated in 0.00085s] ('2',)
+2025-12-14 20:37:40,977 - sqlalchemy.engine.Engine - INFO - SELECT wifi_offline.dlb_sty_id, wifi_offline.dlb_a_id, wifi_offline.dlb_sty_name, wifi_offline.dlb_sty_email, wifi_offline.dlb_sty_mobile, wifi_offline.dlb_sty_mother, wifi_offline.dlb_sty_father, wifi_offline.dlb_parents_number, wifi_offline.dlb_sty_address, wifi_offline.dlb_zipcode, wifi_offline.dlb_offline_name, wifi_offline.dlb_center_name, wifi_offline.dlb_sty_batch, wifi_offline.dlb_sty_exam, wifi_offline.dlb_total_fees, wifi_offline.dlb_final_fees, wifi_offline.dlb_remark, wifi_offline.dlb_sty_image, wifi_offline.dlb_sty_status, wifi_offline.dlb_sty_activedate, wifi_offline.dlb_sty_created_date, wifi_offline.dlb_order_id, wifi_offline.`sendFeedback`, wifi_offline.`feedbackLoop`, wifi_offline.dlb_call_status, wifi_offline.dlb_call_mark, wifi_offline.dlb_call_activate_date, wifi_offline.send_feedback_date, wifi_offline.dlb_sty_session, wifi_offline.dlb_roll_number, wifi_offline.dlb_event, wifi_offline.face_photo1, wifi_offline.face_photo2, wifi_offline.face_embedding1, wifi_offline.face_embedding2, wifi_offline.face_enrolled_date 
+FROM wifi_offline 
+WHERE wifi_offline.dlb_offline_name = %s ORDER BY wifi_offline.dlb_sty_created_date DESC 
+ LIMIT %s, %s
+2025-12-14 20:37:40,978 - sqlalchemy.engine.Engine - INFO - [generated in 0.00072s] ('2', 0, 10)
+2025-12-14 20:37:40,988 - app.api.v1.students - INFO - Successfully returned 10 students, total: 1066, pages: 107
+2025-12-14 20:37:40,992 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-12-14 20:46:40,701 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 20:46:40,708 - sqlalchemy.engine.Engine - INFO - SELECT wifi_admin.dlb_a_id, wifi_admin.dlb_a_name, wifi_admin.dlb_a_phone, wifi_admin.dlb_a_ivr_number, wifi_admin.dlb_a_email, wifi_admin.dlb_a_password, wifi_admin.dlb_a_city, wifi_admin.dlb_a_state, wifi_admin.dlb_a_country, wifi_admin.dlb_a_address, wifi_admin.dlb_a_zip_code, wifi_admin.dlb_a_image, wifi_admin.dlb_a_image_thumb, wifi_admin.dlb_a_status, wifi_admin.dlb_admin_id, wifi_admin.dlb_a_created_date, wifi_admin.dlb_a_type, wifi_admin.dlb_ds_id, wifi_admin.dlb_a_subject, wifi_admin.dlb_a_promo, wifi_admin.dlb_profile_link, wifi_admin.dlb_tele_url, wifi_admin.dlb_pro_url, wifi_admin.dlb_pro_text, wifi_admin.dlb_super_admin, wifi_admin.dlb_code_name, wifi_admin.pending_lead, wifi_admin.user_lead, wifi_admin.dlb_pkg_id, wifi_admin.dlb_salary, wifi_admin.dlb_branch_name, wifi_admin.dlb_center_name, wifi_admin.dlb_cls_type, wifi_admin.dlb_aadhar_pdf, wifi_admin.dlb_other_pdf, wifi_admin.dlb_field, wifi_admin.dlb_ac_number, wifi_admin.dlb_ifsc_code, wifi_admin.dlb_emp_type, wifi_admin.dlb_counsellor_ids, wifi_admin.dlb_auto_lead, wifi_admin.dlb_emp, wifi_admin.dlb_joining_date, wifi_admin.dlb_release_date, wifi_admin.dlb_gender, wifi_admin.dlb_dob_date, wifi_admin.dlb_bank_name, wifi_admin.dlb_designation, wifi_admin.dlb_uan_number, wifi_admin.dlb_bank_holder_name, wifi_admin.dlb_esi_number, wifi_admin.dlb_pancard_number, wifi_admin.dlb_basic_salary, wifi_admin.dlb_hra, wifi_admin.dlb_transport_allowance, wifi_admin.dlb_other_allowance, wifi_admin.dlb_epf, wifi_admin.dlb_esi, wifi_admin.dlb_emp_code, wifi_admin.dlb_biometric_code 
+FROM wifi_admin 
+WHERE wifi_admin.dlb_a_email = %s
+2025-12-14 20:46:40,708 - sqlalchemy.engine.Engine - INFO - [generated in 0.00069s] ('user@gmail.com',)
+2025-12-14 20:46:40,841 - sqlalchemy.engine.Engine - INFO - INSERT INTO wifi_admin (dlb_a_name, dlb_a_phone, dlb_a_ivr_number, dlb_a_email, dlb_a_password, dlb_a_city, dlb_a_state, dlb_a_country, dlb_a_address, dlb_a_zip_code, dlb_a_image, dlb_a_image_thumb, dlb_a_status, dlb_admin_id, dlb_a_type, dlb_ds_id, dlb_a_subject, dlb_a_promo, dlb_profile_link, dlb_tele_url, dlb_pro_url, dlb_pro_text, dlb_super_admin, dlb_code_name, pending_lead, user_lead, dlb_pkg_id, dlb_salary, dlb_branch_name, dlb_center_name, dlb_cls_type, dlb_aadhar_pdf, dlb_other_pdf, dlb_field, dlb_ac_number, dlb_ifsc_code, dlb_emp_type, dlb_counsellor_ids, dlb_auto_lead, dlb_emp, dlb_joining_date, dlb_release_date, dlb_gender, dlb_dob_date, dlb_bank_name, dlb_designation, dlb_uan_number, dlb_bank_holder_name, dlb_esi_number, dlb_pancard_number, dlb_basic_salary, dlb_hra, dlb_transport_allowance, dlb_other_allowance, dlb_epf, dlb_esi, dlb_emp_code, dlb_biometric_code) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+2025-12-14 20:46:40,842 - sqlalchemy.engine.Engine - INFO - [generated in 0.00121s] ('Bittu', '2233445511', 'string', 'user@gmail.com', '$argon2id$v=19$m=65536,t=3,p=4$2BujlNJ6b22N0bq31lorBQ$BgmUO/XTa6Zaj+wpXgVtysOpxaHJzOyV3rMlCPQCU5k', 'string', 'string', 'string', 'string', 'string', '', '', 0, 0, 0, '', 'string', 'string', 'string', 'string', 'string', 'string', 0, 'string', 0, 0, 'string', 0.0, '7', 'string', 0, 'string', 'string', 'string', 'string', 'string', 'string', 'string', 0, 0, datetime.date(2025, 12, 14), datetime.date(2025, 12, 14), 0, datetime.date(2025, 12, 14), 'string', 'string', 'string', 'string', 'string', 'string', Decimal('0'), Decimal('0'), Decimal('0'), Decimal('0'), 0, 0, 0, 'string')
+2025-12-14 20:46:40,862 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-12-14 20:46:40,879 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 20:46:40,881 - sqlalchemy.engine.Engine - INFO - SELECT wifi_admin.dlb_a_id, wifi_admin.dlb_a_name, wifi_admin.dlb_a_phone, wifi_admin.dlb_a_ivr_number, wifi_admin.dlb_a_email, wifi_admin.dlb_a_password, wifi_admin.dlb_a_city, wifi_admin.dlb_a_state, wifi_admin.dlb_a_country, wifi_admin.dlb_a_address, wifi_admin.dlb_a_zip_code, wifi_admin.dlb_a_image, wifi_admin.dlb_a_image_thumb, wifi_admin.dlb_a_status, wifi_admin.dlb_admin_id, wifi_admin.dlb_a_created_date, wifi_admin.dlb_a_type, wifi_admin.dlb_ds_id, wifi_admin.dlb_a_subject, wifi_admin.dlb_a_promo, wifi_admin.dlb_profile_link, wifi_admin.dlb_tele_url, wifi_admin.dlb_pro_url, wifi_admin.dlb_pro_text, wifi_admin.dlb_super_admin, wifi_admin.dlb_code_name, wifi_admin.pending_lead, wifi_admin.user_lead, wifi_admin.dlb_pkg_id, wifi_admin.dlb_salary, wifi_admin.dlb_branch_name, wifi_admin.dlb_center_name, wifi_admin.dlb_cls_type, wifi_admin.dlb_aadhar_pdf, wifi_admin.dlb_other_pdf, wifi_admin.dlb_field, wifi_admin.dlb_ac_number, wifi_admin.dlb_ifsc_code, wifi_admin.dlb_emp_type, wifi_admin.dlb_counsellor_ids, wifi_admin.dlb_auto_lead, wifi_admin.dlb_emp, wifi_admin.dlb_joining_date, wifi_admin.dlb_release_date, wifi_admin.dlb_gender, wifi_admin.dlb_dob_date, wifi_admin.dlb_bank_name, wifi_admin.dlb_designation, wifi_admin.dlb_uan_number, wifi_admin.dlb_bank_holder_name, wifi_admin.dlb_esi_number, wifi_admin.dlb_pancard_number, wifi_admin.dlb_basic_salary, wifi_admin.dlb_hra, wifi_admin.dlb_transport_allowance, wifi_admin.dlb_other_allowance, wifi_admin.dlb_epf, wifi_admin.dlb_esi, wifi_admin.dlb_emp_code, wifi_admin.dlb_biometric_code 
+FROM wifi_admin 
+WHERE wifi_admin.dlb_a_id = %s
+2025-12-14 20:46:40,882 - sqlalchemy.engine.Engine - INFO - [generated in 0.00058s] (4,)
+2025-12-14 20:46:40,887 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-12-14 20:46:40,889 - app.main - ERROR - Unhandled exception: 1 validation errors:
+  {'loc': ('response',), 'msg': 'value is not a valid dict', 'type': 'type_error.dict'}
+
+2025-12-14 20:54:24,768 - sqlalchemy.engine.Engine - INFO - SELECT DATABASE()
+2025-12-14 20:54:24,769 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 20:54:24,770 - sqlalchemy.engine.Engine - INFO - SELECT @@sql_mode
+2025-12-14 20:54:24,770 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 20:54:24,770 - sqlalchemy.engine.Engine - INFO - SELECT @@lower_case_table_names
+2025-12-14 20:54:24,771 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 20:54:24,771 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 20:54:24,772 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_admin`
+2025-12-14 20:54:24,772 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 20:54:24,799 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`wifi_offline`
+2025-12-14 20:54:24,800 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 20:54:24,804 - sqlalchemy.engine.Engine - INFO - DESCRIBE `class24`.`attendance_records`
+2025-12-14 20:54:24,804 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-12-14 20:54:24,807 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-12-14 20:54:24,808 - app.services.face_recognition - INFO - Initializing FaceService with model: buffalo_s
+2025-12-14 20:54:24,810 - app.services.face_recognition - INFO - Model directory: C:\Users\amank\PycharmProjects\new_project\.insightface_models
+2025-12-14 20:54:25,426 - app.services.face_recognition - INFO - Downloading face recognition models...
+2025-12-14 20:54:25,473 - app.services.face_recognition - INFO - Models downloaded successfully
+2025-12-14 20:54:25,478 - app.services.face_recognition - INFO - Attempt 1/3 to import InsightFace
+2025-12-14 20:54:25,478 - app.services.face_recognition - INFO - Initializing FaceAnalysis with model: buffalo_s
+2025-12-14 20:54:26,169 - app.services.face_recognition - INFO - Preparing FaceAnalysis model...
+2025-12-14 20:54:26,169 - app.services.face_recognition - INFO - Testing model with sample image...
+2025-12-14 20:54:26,187 - app.services.face_recognition - INFO - Test successful - detected 0 faces
+2025-12-14 20:54:26,188 - app.services.face_recognition - INFO - FaceService initialized successfully
+2025-12-14 20:54:29,203 - app.main - INFO - Face service status: {'status': 'ready', 'model': 'buffalo_s', 'error': None, 'dependencies': {'opencv': True, 'numpy': True, 'sklearn': True, 'onnxruntime': True, 'insightface': True}}
+2025-12-14 20:54:44,126 - app.api.v1.admin_auth - INFO - Starting admin registration for email: user@gmail.com
+2025-12-14 20:54:44,133 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 20:54:44,152 - sqlalchemy.engine.Engine - INFO - SELECT wifi_admin.dlb_a_id, wifi_admin.dlb_a_name, wifi_admin.dlb_a_phone, wifi_admin.dlb_a_ivr_number, wifi_admin.dlb_a_email, wifi_admin.dlb_a_password, wifi_admin.dlb_a_city, wifi_admin.dlb_a_state, wifi_admin.dlb_a_country, wifi_admin.dlb_a_address, wifi_admin.dlb_a_zip_code, wifi_admin.dlb_a_image, wifi_admin.dlb_a_image_thumb, wifi_admin.dlb_a_status, wifi_admin.dlb_admin_id, wifi_admin.dlb_a_created_date, wifi_admin.dlb_a_type, wifi_admin.dlb_ds_id, wifi_admin.dlb_a_subject, wifi_admin.dlb_a_promo, wifi_admin.dlb_profile_link, wifi_admin.dlb_tele_url, wifi_admin.dlb_pro_url, wifi_admin.dlb_pro_text, wifi_admin.dlb_super_admin, wifi_admin.dlb_code_name, wifi_admin.pending_lead, wifi_admin.user_lead, wifi_admin.dlb_pkg_id, wifi_admin.dlb_salary, wifi_admin.dlb_branch_name, wifi_admin.dlb_center_name, wifi_admin.dlb_cls_type, wifi_admin.dlb_aadhar_pdf, wifi_admin.dlb_other_pdf, wifi_admin.dlb_field, wifi_admin.dlb_ac_number, wifi_admin.dlb_ifsc_code, wifi_admin.dlb_emp_type, wifi_admin.dlb_counsellor_ids, wifi_admin.dlb_auto_lead, wifi_admin.dlb_emp, wifi_admin.dlb_joining_date, wifi_admin.dlb_release_date, wifi_admin.dlb_gender, wifi_admin.dlb_dob_date, wifi_admin.dlb_bank_name, wifi_admin.dlb_designation, wifi_admin.dlb_uan_number, wifi_admin.dlb_bank_holder_name, wifi_admin.dlb_esi_number, wifi_admin.dlb_pancard_number, wifi_admin.dlb_basic_salary, wifi_admin.dlb_hra, wifi_admin.dlb_transport_allowance, wifi_admin.dlb_other_allowance, wifi_admin.dlb_epf, wifi_admin.dlb_esi, wifi_admin.dlb_emp_code, wifi_admin.dlb_biometric_code 
+FROM wifi_admin 
+WHERE wifi_admin.dlb_a_email = %s
+2025-12-14 20:54:44,152 - sqlalchemy.engine.Engine - INFO - [generated in 0.00097s] ('user@gmail.com',)
+2025-12-14 20:54:44,157 - app.api.v1.admin_auth - WARNING - Admin registration failed - email already exists: user@gmail.com
+2025-12-14 20:54:44,158 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-12-14 20:55:39,596 - app.api.v1.admin_auth - INFO - Starting admin registration for email: Bittu@gmail.com
+2025-12-14 20:55:39,599 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 20:55:39,600 - sqlalchemy.engine.Engine - INFO - SELECT wifi_admin.dlb_a_id, wifi_admin.dlb_a_name, wifi_admin.dlb_a_phone, wifi_admin.dlb_a_ivr_number, wifi_admin.dlb_a_email, wifi_admin.dlb_a_password, wifi_admin.dlb_a_city, wifi_admin.dlb_a_state, wifi_admin.dlb_a_country, wifi_admin.dlb_a_address, wifi_admin.dlb_a_zip_code, wifi_admin.dlb_a_image, wifi_admin.dlb_a_image_thumb, wifi_admin.dlb_a_status, wifi_admin.dlb_admin_id, wifi_admin.dlb_a_created_date, wifi_admin.dlb_a_type, wifi_admin.dlb_ds_id, wifi_admin.dlb_a_subject, wifi_admin.dlb_a_promo, wifi_admin.dlb_profile_link, wifi_admin.dlb_tele_url, wifi_admin.dlb_pro_url, wifi_admin.dlb_pro_text, wifi_admin.dlb_super_admin, wifi_admin.dlb_code_name, wifi_admin.pending_lead, wifi_admin.user_lead, wifi_admin.dlb_pkg_id, wifi_admin.dlb_salary, wifi_admin.dlb_branch_name, wifi_admin.dlb_center_name, wifi_admin.dlb_cls_type, wifi_admin.dlb_aadhar_pdf, wifi_admin.dlb_other_pdf, wifi_admin.dlb_field, wifi_admin.dlb_ac_number, wifi_admin.dlb_ifsc_code, wifi_admin.dlb_emp_type, wifi_admin.dlb_counsellor_ids, wifi_admin.dlb_auto_lead, wifi_admin.dlb_emp, wifi_admin.dlb_joining_date, wifi_admin.dlb_release_date, wifi_admin.dlb_gender, wifi_admin.dlb_dob_date, wifi_admin.dlb_bank_name, wifi_admin.dlb_designation, wifi_admin.dlb_uan_number, wifi_admin.dlb_bank_holder_name, wifi_admin.dlb_esi_number, wifi_admin.dlb_pancard_number, wifi_admin.dlb_basic_salary, wifi_admin.dlb_hra, wifi_admin.dlb_transport_allowance, wifi_admin.dlb_other_allowance, wifi_admin.dlb_epf, wifi_admin.dlb_esi, wifi_admin.dlb_emp_code, wifi_admin.dlb_biometric_code 
+FROM wifi_admin 
+WHERE wifi_admin.dlb_a_email = %s
+2025-12-14 20:55:39,600 - sqlalchemy.engine.Engine - INFO - [cached since 55.45s ago] ('Bittu@gmail.com',)
+2025-12-14 20:55:39,604 - app.crud.admin - INFO - Creating new admin with email: Bittu@gmail.com
+2025-12-14 20:55:39,691 - sqlalchemy.engine.Engine - INFO - INSERT INTO wifi_admin (dlb_a_name, dlb_a_phone, dlb_a_ivr_number, dlb_a_email, dlb_a_password, dlb_a_city, dlb_a_state, dlb_a_country, dlb_a_address, dlb_a_zip_code, dlb_a_image, dlb_a_image_thumb, dlb_a_status, dlb_admin_id, dlb_a_type, dlb_ds_id, dlb_a_subject, dlb_a_promo, dlb_profile_link, dlb_tele_url, dlb_pro_url, dlb_pro_text, dlb_super_admin, dlb_code_name, pending_lead, user_lead, dlb_pkg_id, dlb_salary, dlb_branch_name, dlb_center_name, dlb_cls_type, dlb_aadhar_pdf, dlb_other_pdf, dlb_field, dlb_ac_number, dlb_ifsc_code, dlb_emp_type, dlb_counsellor_ids, dlb_auto_lead, dlb_emp, dlb_joining_date, dlb_release_date, dlb_gender, dlb_dob_date, dlb_bank_name, dlb_designation, dlb_uan_number, dlb_bank_holder_name, dlb_esi_number, dlb_pancard_number, dlb_basic_salary, dlb_hra, dlb_transport_allowance, dlb_other_allowance, dlb_epf, dlb_esi, dlb_emp_code, dlb_biometric_code) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+2025-12-14 20:55:39,692 - sqlalchemy.engine.Engine - INFO - [generated in 0.00082s] ('Bittu', '2233445511', 'string', 'Bittu@gmail.com', '$argon2id$v=19$m=65536,t=3,p=4$NUaIkbI2Zozxfu+9F8K41w$o8cm77qz2pCuZGBCfLqlZyO0BTwmaBnK436QOEQbcPk', 'string', 'string', 'string', 'string', 'string', '', '', 0, 0, 0, '', 'string', 'string', 'string', 'string', 'string', 'string', 0, 'string', 0, 0, 'string', 0.0, '7', 'string', 0, 'string', 'string', 'string', 'string', 'string', 'string', 'string', 0, 0, datetime.date(2025, 12, 14), datetime.date(2025, 12, 14), 0, datetime.date(2025, 12, 14), 'string', 'string', 'string', 'string', 'string', 'string', Decimal('0'), Decimal('0'), Decimal('0'), Decimal('0'), 0, 0, 0, 'string')
+2025-12-14 20:55:39,699 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-12-14 20:55:39,712 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 20:55:39,715 - sqlalchemy.engine.Engine - INFO - SELECT wifi_admin.dlb_a_id, wifi_admin.dlb_a_name, wifi_admin.dlb_a_phone, wifi_admin.dlb_a_ivr_number, wifi_admin.dlb_a_email, wifi_admin.dlb_a_password, wifi_admin.dlb_a_city, wifi_admin.dlb_a_state, wifi_admin.dlb_a_country, wifi_admin.dlb_a_address, wifi_admin.dlb_a_zip_code, wifi_admin.dlb_a_image, wifi_admin.dlb_a_image_thumb, wifi_admin.dlb_a_status, wifi_admin.dlb_admin_id, wifi_admin.dlb_a_created_date, wifi_admin.dlb_a_type, wifi_admin.dlb_ds_id, wifi_admin.dlb_a_subject, wifi_admin.dlb_a_promo, wifi_admin.dlb_profile_link, wifi_admin.dlb_tele_url, wifi_admin.dlb_pro_url, wifi_admin.dlb_pro_text, wifi_admin.dlb_super_admin, wifi_admin.dlb_code_name, wifi_admin.pending_lead, wifi_admin.user_lead, wifi_admin.dlb_pkg_id, wifi_admin.dlb_salary, wifi_admin.dlb_branch_name, wifi_admin.dlb_center_name, wifi_admin.dlb_cls_type, wifi_admin.dlb_aadhar_pdf, wifi_admin.dlb_other_pdf, wifi_admin.dlb_field, wifi_admin.dlb_ac_number, wifi_admin.dlb_ifsc_code, wifi_admin.dlb_emp_type, wifi_admin.dlb_counsellor_ids, wifi_admin.dlb_auto_lead, wifi_admin.dlb_emp, wifi_admin.dlb_joining_date, wifi_admin.dlb_release_date, wifi_admin.dlb_gender, wifi_admin.dlb_dob_date, wifi_admin.dlb_bank_name, wifi_admin.dlb_designation, wifi_admin.dlb_uan_number, wifi_admin.dlb_bank_holder_name, wifi_admin.dlb_esi_number, wifi_admin.dlb_pancard_number, wifi_admin.dlb_basic_salary, wifi_admin.dlb_hra, wifi_admin.dlb_transport_allowance, wifi_admin.dlb_other_allowance, wifi_admin.dlb_epf, wifi_admin.dlb_esi, wifi_admin.dlb_emp_code, wifi_admin.dlb_biometric_code 
+FROM wifi_admin 
+WHERE wifi_admin.dlb_a_id = %s
+2025-12-14 20:55:39,716 - sqlalchemy.engine.Engine - INFO - [generated in 0.00075s] (5,)
+2025-12-14 20:55:39,719 - app.crud.admin - INFO - Admin created successfully: Bittu@gmail.com (ID: 5)
+2025-12-14 20:55:39,719 - app.api.v1.admin_auth - INFO - Admin registered successfully: Bittu@gmail.com (ID: 5)
+2025-12-14 20:55:39,720 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-12-14 20:56:27,453 - app.api.v1.admin_auth - INFO - Login attempt for email: Bittu@gmail.com
+2025-12-14 20:56:27,457 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 20:56:27,458 - sqlalchemy.engine.Engine - INFO - SELECT wifi_admin.dlb_a_id, wifi_admin.dlb_a_name, wifi_admin.dlb_a_phone, wifi_admin.dlb_a_ivr_number, wifi_admin.dlb_a_email, wifi_admin.dlb_a_password, wifi_admin.dlb_a_city, wifi_admin.dlb_a_state, wifi_admin.dlb_a_country, wifi_admin.dlb_a_address, wifi_admin.dlb_a_zip_code, wifi_admin.dlb_a_image, wifi_admin.dlb_a_image_thumb, wifi_admin.dlb_a_status, wifi_admin.dlb_admin_id, wifi_admin.dlb_a_created_date, wifi_admin.dlb_a_type, wifi_admin.dlb_ds_id, wifi_admin.dlb_a_subject, wifi_admin.dlb_a_promo, wifi_admin.dlb_profile_link, wifi_admin.dlb_tele_url, wifi_admin.dlb_pro_url, wifi_admin.dlb_pro_text, wifi_admin.dlb_super_admin, wifi_admin.dlb_code_name, wifi_admin.pending_lead, wifi_admin.user_lead, wifi_admin.dlb_pkg_id, wifi_admin.dlb_salary, wifi_admin.dlb_branch_name, wifi_admin.dlb_center_name, wifi_admin.dlb_cls_type, wifi_admin.dlb_aadhar_pdf, wifi_admin.dlb_other_pdf, wifi_admin.dlb_field, wifi_admin.dlb_ac_number, wifi_admin.dlb_ifsc_code, wifi_admin.dlb_emp_type, wifi_admin.dlb_counsellor_ids, wifi_admin.dlb_auto_lead, wifi_admin.dlb_emp, wifi_admin.dlb_joining_date, wifi_admin.dlb_release_date, wifi_admin.dlb_gender, wifi_admin.dlb_dob_date, wifi_admin.dlb_bank_name, wifi_admin.dlb_designation, wifi_admin.dlb_uan_number, wifi_admin.dlb_bank_holder_name, wifi_admin.dlb_esi_number, wifi_admin.dlb_pancard_number, wifi_admin.dlb_basic_salary, wifi_admin.dlb_hra, wifi_admin.dlb_transport_allowance, wifi_admin.dlb_other_allowance, wifi_admin.dlb_epf, wifi_admin.dlb_esi, wifi_admin.dlb_emp_code, wifi_admin.dlb_biometric_code 
+FROM wifi_admin 
+WHERE wifi_admin.dlb_a_email = %s
+2025-12-14 20:56:27,459 - sqlalchemy.engine.Engine - INFO - [cached since 103.3s ago] ('Bittu@gmail.com',)
+2025-12-14 20:56:27,545 - app.api.v1.admin_auth - WARNING - Failed login attempt for email: Bittu@gmail.com
+2025-12-14 20:56:27,546 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-12-14 20:56:59,959 - app.api.v1.admin_auth - INFO - Login attempt for email: Bittu@gmail.com
+2025-12-14 20:56:59,962 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 20:56:59,963 - sqlalchemy.engine.Engine - INFO - SELECT wifi_admin.dlb_a_id, wifi_admin.dlb_a_name, wifi_admin.dlb_a_phone, wifi_admin.dlb_a_ivr_number, wifi_admin.dlb_a_email, wifi_admin.dlb_a_password, wifi_admin.dlb_a_city, wifi_admin.dlb_a_state, wifi_admin.dlb_a_country, wifi_admin.dlb_a_address, wifi_admin.dlb_a_zip_code, wifi_admin.dlb_a_image, wifi_admin.dlb_a_image_thumb, wifi_admin.dlb_a_status, wifi_admin.dlb_admin_id, wifi_admin.dlb_a_created_date, wifi_admin.dlb_a_type, wifi_admin.dlb_ds_id, wifi_admin.dlb_a_subject, wifi_admin.dlb_a_promo, wifi_admin.dlb_profile_link, wifi_admin.dlb_tele_url, wifi_admin.dlb_pro_url, wifi_admin.dlb_pro_text, wifi_admin.dlb_super_admin, wifi_admin.dlb_code_name, wifi_admin.pending_lead, wifi_admin.user_lead, wifi_admin.dlb_pkg_id, wifi_admin.dlb_salary, wifi_admin.dlb_branch_name, wifi_admin.dlb_center_name, wifi_admin.dlb_cls_type, wifi_admin.dlb_aadhar_pdf, wifi_admin.dlb_other_pdf, wifi_admin.dlb_field, wifi_admin.dlb_ac_number, wifi_admin.dlb_ifsc_code, wifi_admin.dlb_emp_type, wifi_admin.dlb_counsellor_ids, wifi_admin.dlb_auto_lead, wifi_admin.dlb_emp, wifi_admin.dlb_joining_date, wifi_admin.dlb_release_date, wifi_admin.dlb_gender, wifi_admin.dlb_dob_date, wifi_admin.dlb_bank_name, wifi_admin.dlb_designation, wifi_admin.dlb_uan_number, wifi_admin.dlb_bank_holder_name, wifi_admin.dlb_esi_number, wifi_admin.dlb_pancard_number, wifi_admin.dlb_basic_salary, wifi_admin.dlb_hra, wifi_admin.dlb_transport_allowance, wifi_admin.dlb_other_allowance, wifi_admin.dlb_epf, wifi_admin.dlb_esi, wifi_admin.dlb_emp_code, wifi_admin.dlb_biometric_code 
+FROM wifi_admin 
+WHERE wifi_admin.dlb_a_email = %s
+2025-12-14 20:56:59,963 - sqlalchemy.engine.Engine - INFO - [cached since 135.8s ago] ('Bittu@gmail.com',)
+2025-12-14 20:57:00,051 - app.api.v1.admin_auth - WARNING - Failed login attempt for email: Bittu@gmail.com
+2025-12-14 20:57:00,052 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-12-14 20:57:27,429 - app.api.v1.admin_auth - INFO - Login attempt for email: Bittu@gmail.com
+2025-12-14 20:57:27,433 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 20:57:27,434 - sqlalchemy.engine.Engine - INFO - SELECT wifi_admin.dlb_a_id, wifi_admin.dlb_a_name, wifi_admin.dlb_a_phone, wifi_admin.dlb_a_ivr_number, wifi_admin.dlb_a_email, wifi_admin.dlb_a_password, wifi_admin.dlb_a_city, wifi_admin.dlb_a_state, wifi_admin.dlb_a_country, wifi_admin.dlb_a_address, wifi_admin.dlb_a_zip_code, wifi_admin.dlb_a_image, wifi_admin.dlb_a_image_thumb, wifi_admin.dlb_a_status, wifi_admin.dlb_admin_id, wifi_admin.dlb_a_created_date, wifi_admin.dlb_a_type, wifi_admin.dlb_ds_id, wifi_admin.dlb_a_subject, wifi_admin.dlb_a_promo, wifi_admin.dlb_profile_link, wifi_admin.dlb_tele_url, wifi_admin.dlb_pro_url, wifi_admin.dlb_pro_text, wifi_admin.dlb_super_admin, wifi_admin.dlb_code_name, wifi_admin.pending_lead, wifi_admin.user_lead, wifi_admin.dlb_pkg_id, wifi_admin.dlb_salary, wifi_admin.dlb_branch_name, wifi_admin.dlb_center_name, wifi_admin.dlb_cls_type, wifi_admin.dlb_aadhar_pdf, wifi_admin.dlb_other_pdf, wifi_admin.dlb_field, wifi_admin.dlb_ac_number, wifi_admin.dlb_ifsc_code, wifi_admin.dlb_emp_type, wifi_admin.dlb_counsellor_ids, wifi_admin.dlb_auto_lead, wifi_admin.dlb_emp, wifi_admin.dlb_joining_date, wifi_admin.dlb_release_date, wifi_admin.dlb_gender, wifi_admin.dlb_dob_date, wifi_admin.dlb_bank_name, wifi_admin.dlb_designation, wifi_admin.dlb_uan_number, wifi_admin.dlb_bank_holder_name, wifi_admin.dlb_esi_number, wifi_admin.dlb_pancard_number, wifi_admin.dlb_basic_salary, wifi_admin.dlb_hra, wifi_admin.dlb_transport_allowance, wifi_admin.dlb_other_allowance, wifi_admin.dlb_epf, wifi_admin.dlb_esi, wifi_admin.dlb_emp_code, wifi_admin.dlb_biometric_code 
+FROM wifi_admin 
+WHERE wifi_admin.dlb_a_email = %s
+2025-12-14 20:57:27,434 - sqlalchemy.engine.Engine - INFO - [cached since 163.3s ago] ('Bittu@gmail.com',)
+2025-12-14 20:57:27,514 - app.api.v1.admin_auth - WARNING - Failed login attempt for email: Bittu@gmail.com
+2025-12-14 20:57:27,514 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-12-14 20:57:56,569 - app.api.v1.admin_auth - INFO - Login attempt for email: Bittu@gmail.com
+2025-12-14 20:57:56,573 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-12-14 20:57:56,575 - sqlalchemy.engine.Engine - INFO - SELECT wifi_admin.dlb_a_id, wifi_admin.dlb_a_name, wifi_admin.dlb_a_phone, wifi_admin.dlb_a_ivr_number, wifi_admin.dlb_a_email, wifi_admin.dlb_a_password, wifi_admin.dlb_a_city, wifi_admin.dlb_a_state, wifi_admin.dlb_a_country, wifi_admin.dlb_a_address, wifi_admin.dlb_a_zip_code, wifi_admin.dlb_a_image, wifi_admin.dlb_a_image_thumb, wifi_admin.dlb_a_status, wifi_admin.dlb_admin_id, wifi_admin.dlb_a_created_date, wifi_admin.dlb_a_type, wifi_admin.dlb_ds_id, wifi_admin.dlb_a_subject, wifi_admin.dlb_a_promo, wifi_admin.dlb_profile_link, wifi_admin.dlb_tele_url, wifi_admin.dlb_pro_url, wifi_admin.dlb_pro_text, wifi_admin.dlb_super_admin, wifi_admin.dlb_code_name, wifi_admin.pending_lead, wifi_admin.user_lead, wifi_admin.dlb_pkg_id, wifi_admin.dlb_salary, wifi_admin.dlb_branch_name, wifi_admin.dlb_center_name, wifi_admin.dlb_cls_type, wifi_admin.dlb_aadhar_pdf, wifi_admin.dlb_other_pdf, wifi_admin.dlb_field, wifi_admin.dlb_ac_number, wifi_admin.dlb_ifsc_code, wifi_admin.dlb_emp_type, wifi_admin.dlb_counsellor_ids, wifi_admin.dlb_auto_lead, wifi_admin.dlb_emp, wifi_admin.dlb_joining_date, wifi_admin.dlb_release_date, wifi_admin.dlb_gender, wifi_admin.dlb_dob_date, wifi_admin.dlb_bank_name, wifi_admin.dlb_designation, wifi_admin.dlb_uan_number, wifi_admin.dlb_bank_holder_name, wifi_admin.dlb_esi_number, wifi_admin.dlb_pancard_number, wifi_admin.dlb_basic_salary, wifi_admin.dlb_hra, wifi_admin.dlb_transport_allowance, wifi_admin.dlb_other_allowance, wifi_admin.dlb_epf, wifi_admin.dlb_esi, wifi_admin.dlb_emp_code, wifi_admin.dlb_biometric_code 
+FROM wifi_admin 
+WHERE wifi_admin.dlb_a_email = %s
+2025-12-14 20:57:56,575 - sqlalchemy.engine.Engine - INFO - [cached since 192.4s ago] ('Bittu@gmail.com',)
+2025-12-14 20:57:56,669 - app.api.v1.admin_auth - INFO - Successful login for admin: Bittu@gmail.com (ID: 5)
+2025-12-14 20:57:56,671 - sqlalchemy.engine.Engine - INFO - COMMIT
